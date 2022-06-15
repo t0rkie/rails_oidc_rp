@@ -9,8 +9,8 @@ module OmniAuth
       # This is where you pass the options you would pass when
       # initializing your consumer from the OAuth gem.
       option :client_options, {
-        :site => "#{ENV['OIDC_PROVIDER_HOST']}/oauth/authorize"
-        # :site => "#{ENV['OIDC_PROVIDER_HOST']}"
+        # :site => "#{ENV['OIDC_PROVIDER_HOST']}/oauth/authorize" 記事の通り
+        :site => "#{ENV['OIDC_PROVIDER_HOST']}" # fix <- https://github.com/omniauth/omniauth-oauth2
       }
 
       # You may specify that your strategy should use PKCE by setting
@@ -61,6 +61,7 @@ module OmniAuth
       end
 
       def id_token_payload(id_token, subject_from_userinfo)
+        puts "id_token_payload is called"
         # decodeできない場合はエラーを送出する
         payload, _header = JWT.decode(
           id_token, # JWT
