@@ -221,6 +221,7 @@ DEPENDENCIES
   bootsnap
   debug
   dotenv-rails
+  faraday
   jbuilder
   omniauth
   omniauth-oauth2

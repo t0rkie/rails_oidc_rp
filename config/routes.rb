@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # get 'introspections/index' # コメントアウト
   # get 'home/index'
   # get 'sessions/create'
   # get 'sessions/destroy'
@@ -9,6 +10,11 @@ Rails.application.routes.draw do
   
   # ルート設定
   root to: 'home#index'
+
+  # 下のOPからのコールバックURIにマッチする前にマッチしたいのでここで設定
+  # introspection_rpのコールバック先
+  get 'auth/introspection/callback', to: 'introspections#callback'
+  get 'introspection', to: 'introspections#index'
 
   # OPからのコールバックURI
   get 'auth/:provider/callback', to: 'sessions#create'

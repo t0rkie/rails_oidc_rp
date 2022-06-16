@@ -73,3 +73,5 @@ group :development do
   gem 'annotate'
 end
 
+gem 'faraday'
+
