@@ -13,4 +13,11 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            #     prompt: 'none'
            #   }
            # }
+
+  # instospection用のストラテジー
+  provider :my_op,
+           ENV['CLIENT_ID_OF_INTROSPECTION'],
+           ENV['CLIENT_SECRET_OF_INTROSPECTION'],
+           name: 'introspection',
+           scope: 'openid introspection'
 end

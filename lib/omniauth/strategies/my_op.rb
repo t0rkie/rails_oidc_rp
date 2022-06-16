@@ -71,7 +71,8 @@ module OmniAuth
             algorithm: 'RS256', # 署名は公開鍵方式なので、RS256を指定
             iss: ENV['ISSUER_OF_MY_OP'],
             verify_iss: true,
-            aud: ENV['CLIENT_ID_OF_MY_OP'],
+            # aud: ENV['CLIENT_ID_OF_MY_OP'],
+            aud: options['client_id'], # ストラテジーを使い回すためclient_idはoptionsから取得
             verify_aud: true,
             sub: subject_from_userinfo,
             verify_sub: true,
